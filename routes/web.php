@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\MyProfileController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -117,3 +118,15 @@ Route::get("/student/component", function () {
 Route::get('/table', function () {
     return view('tables');
 });
+
+// Week 4
+Route::get("/myprofile/create",[ MyProfileController::class , "create" ]);
+
+Route::get("/myprofile/{id}/edit", [ MyProfileController::class , "edit" ] );
+
+Route::get("/myprofile/{id}", [ MyProfileController::class , "show" ]);
+
+
+Route::get("/newgallery", [ MyProfileController::class, "gallery"]);
+
+Route::get("/newgallery/{name}", [ MyProfileController::class, "galleryByName"]);
