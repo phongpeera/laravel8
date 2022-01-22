@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Covid19Controller;
 use App\Http\Controllers\MyProfileController;
+use App\Http\Controllers\StaffController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -152,3 +153,6 @@ Route::resource('/covid19', Covid19Controller::class );
 // Route::patch("/covid19/{id}", [ Covid19Controller::class , "update" ]);
 
 // Route::delete('/covid19/{id}', [ Covid19Controller::class , 'destroy' ]);
+
+// Week 7 Exercise CRUD
+Route::resource('/staff', StaffController::class );
