@@ -1,8 +1,11 @@
 <?php
 
+use App\Http\Controllers\BookController;
 use App\Http\Controllers\Covid19Controller;
 use App\Http\Controllers\MyProfileController;
+use App\Http\Controllers\PostController;
 use App\Http\Controllers\StaffController;
+use App\Http\Controllers\StreetController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -156,3 +159,9 @@ Route::resource('/covid19', Covid19Controller::class );
 
 // Week 7 Exercise CRUD
 Route::resource('/staff', StaffController::class );
+
+// Week 7 CRUD Generator
+// Route::resource('post', 'PostController');
+Route::resource('post', PostController::class);
+Route::resource('book', BookController::class);
+Route::resource('street', StreetController::class);
