@@ -4,8 +4,11 @@ use App\Http\Controllers\BookController;
 use App\Http\Controllers\Covid19Controller;
 use App\Http\Controllers\MyProfileController;
 use App\Http\Controllers\PostController;
+use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\StaffController;
 use App\Http\Controllers\StreetController;
+use App\Http\Controllers\UserController;
+use App\Http\Controllers\VehicleController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -171,3 +174,12 @@ Route::resource('/staff', StaffController::class);
 Route::resource('post', PostController::class);
 Route::resource('book', BookController::class);
 Route::resource('street', StreetController::class);
+
+
+// Route::resource('profile', 'ProfileController');
+// Route::resource('user', 'UserController');
+// Route::resource('vehicle', 'VehicleController');
+
+Route::resource('profile', ProfileController::class);
+Route::resource('user', UserController::class);
+Route::resource('vehicle', VehicleController::class);
