@@ -45,8 +45,14 @@
                                         <tr>
                                             <td>{{ $loop->iteration }}</td>
                                             <td>{{ $item->order_id }}</td>
-                                            <td>{{ $item->product_id }}</td>
-                                            <td>{{ $item->user_id }}</td>
+                                            {{-- <td>{{ $item->product_id }}</td> --}}
+                                            <td>
+                                                <div><img src="{{ url('storage/' . $item->product->photo) }}"
+                                                        width="100" /> </div>
+                                                <div>{{ $item->product->title }}</div>
+                                            </td>
+                                            {{-- <td>{{ $item->user_id }}</td> --}}
+                                            <td>{{ $item->user->name }}</td>
                                             <td>{{ $item->quantity }}</td>
                                             <td>{{ $item->price }}</td>
                                             <td>{{ $item->total }}</td>
@@ -78,6 +84,16 @@
                             </table>
                             <div class="pagination-wrapper"> {!! $orderproduct->appends(['search' => Request::get('search')])->render() !!} </div>
                         </div>
+                        <form method="POST" action="{{ url('/order') }}" accept-charset="UTF-8"
+                            class="form-horizontal text-center" enctype="multipart/form-data">
+                            {{ csrf_field() }}
+
+                            <h2>รวมราคาสินค้า {{ number_format($orderproduct->sum('total')) }} บาท</h2>
+
+                            <button class="btn btn-primary" type="submit">
+                                สั่งสินค้า
+                            </button>
+                        </form>
 
                     </div>
                 </div>

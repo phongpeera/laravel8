@@ -29,15 +29,16 @@
                             <table class="table">
                                 <thead>
                                     <tr>
-                                        <th>#</th>
+                                        <th>#Order Id</th>
+                                        <th>Date</th>
                                         <th>User Id</th>
-                                        <th>Remark</th>
+                                        {{-- <th>Remark</th> --}}
                                         <th>Total</th>
                                         <th>Status</th>
-                                        <th>Checking At</th>
-                                        <th>Paid At</th>
-                                        <th>Cancelled At</th>
-                                        <th>Completed At</th>
+                                        {{-- <th>Checking At</th> --}}
+                                        {{-- <th>Paid At</th> --}}
+                                        {{-- <th>Cancelled At</th> --}}
+                                        {{-- <th>Completed At</th> --}}
                                         <th>Tracking</th>
                                         <th>Actions</th>
                                     </tr>
@@ -45,15 +46,33 @@
                                 <tbody>
                                     @foreach ($order as $item)
                                         <tr>
-                                            <td>{{ $loop->iteration }}</td>
-                                            <td>{{ $item->user_id }}</td>
-                                            <td>{{ $item->remark }}</td>
+                                            <td>{{ $item->id }}</td>
+                                            <td>{{ $item->created_at }}
+                                            <td>{{ $item->user->name }}</td>
+                                            {{-- <td>{{ $item->remark }}</td> --}}
                                             <td>{{ $item->total }}</td>
-                                            <td>{{ $item->status }}</td>
-                                            <td>{{ $item->checking_at }}</td>
-                                            <td>{{ $item->paid_at }}</td>
-                                            <td>{{ $item->cancelled_at }}</td>
-                                            <td>{{ $item->completed_at }}</td>
+                                            {{-- <td>{{ $item->status }}</td> --}}
+                                            <td>
+                                                @switch($item->status)
+                                                    @case("created") 
+                                                        <div>รอหลักฐานการชำระเงิน</div>
+                                                        <a class="btn btn-sm btn-warning" href="{{ url('payment/create?order_id='.$item->id) }}">ส่งหลักฐาน</a>
+                                                        @break
+                                                    @case("checking") 
+                                                        <div>รอตรวจสอบ</div>
+                                                        @break
+                                                    @case("paid") 
+                                                        <div>ชำระเงินแล้ว</div>
+                                                        @break
+                                                    @case("completed") 
+                                                        <div>ส่งสินค้าแล้ว</div>
+                                                        @break
+                                                @endswitch
+                                            </td>
+                                            {{-- <td>{{ $item->checking_at }}</td> --}}
+                                            {{-- <td>{{ $item->paid_at }}</td> --}}
+                                            {{-- <td>{{ $item->cancelled_at }}</td> --}}
+                                            {{-- <td>{{ $item->completed_at }}</td> --}}
                                             <td>{{ $item->tracking }}</td>
                                             <td>
                                                 <a href="{{ url('/order/' . $item->id) }}" title="View Order"><button
