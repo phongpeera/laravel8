@@ -192,11 +192,19 @@ Route::resource('vehicle', VehicleController::class);
 // Route::resource('payment', 'PaymentController');
 // Route::resource('order-product', 'OrderProductController');
 // Route::resource('product', 'ProductController');
-
+Route::get('/product/pdf', [ ProductController::class , 'pdf_index' ] );
 Route::resource('product', ProductController::class);
 
 Route::middleware(['auth'])->group(function () {
+    Route::middleware(['role:admin'])->group(function () {    //ONLY ADMIN CAN ACCESS
+        //SPECIFIC ROUTES
+          Route::get('order-product/reportdaily', [OrderProductController::class,'reportdaily']);
+          Route::get('order-product/reportmonthly', [OrderProductController::class,'reportmonthly']);
+          Route::get('order-product/reportyearly', [OrderProductController::class,'reportyearly']);
+      });
+      
+    Route::resource('order-product', OrderProductController::class);
     Route::resource('order', OrderController::class);
     Route::resource('payment', PaymentController::class);
-    Route::resource('order-product', OrderProductController::class);
 });
+
