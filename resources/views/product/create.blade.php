@@ -4,9 +4,9 @@
 
             <div class="col-md-12">
                 <div class="card">
-                    <div class="card-header">Create New Product</div>
+                    <div class="card-header">สร้างสินค้าใหม่</div>
                     <div class="card-body">
-                        <a href="{{ url('/product') }}" title="Back"><button class="btn btn-warning btn-sm"><i class="fa fa-arrow-left" aria-hidden="true"></i> Back</button></a>
+                        <a href="{{ url('/product') }}" title="Back"><button class="btn btn-warning btn-sm"><i class="fa fa-arrow-left" aria-hidden="true"></i> กล้บ</button></a>
                         <br />
                         <br />
 

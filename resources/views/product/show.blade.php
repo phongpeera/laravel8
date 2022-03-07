@@ -4,23 +4,31 @@
 
             <div class="col-md-12">
                 <div class="card">
-                    <div class="card-header">Product {{ $product->id }}</div>
+                    <div class="card-header">รายละเอียดสินค้า #{{ $product->id }}</div>
                     <div class="card-body">
 
                         <a href="{{ url('/product') }}" title="Back"><button class="btn btn-warning btn-sm"><i
-                                    class="fa fa-arrow-left" aria-hidden="true"></i> Back</button></a>
-                        <a href="{{ url('/product/' . $product->id . '/edit') }}" title="Edit Product"><button
-                                class="btn btn-primary btn-sm"><i class="fa fa-pencil-square-o" aria-hidden="true"></i>
-                                Edit</button></a>
+                                    class="fa fa-arrow-left" aria-hidden="true"></i> กล้บ</button></a>
 
-                        <form method="POST" action="{{ url('product' . '/' . $product->id) }}" accept-charset="UTF-8"
-                            style="display:inline">
-                            {{ method_field('DELETE') }}
-                            {{ csrf_field() }}
-                            <button type="submit" class="btn btn-danger btn-sm" title="Delete Product"
-                                onclick="return confirm('Confirm delete?')"><i class="fa fa-trash-o"
-                                    aria-hidden="true"></i> Delete</button>
-                        </form>
+                        @if (Auth::check())
+                            @if (Auth::user()->role == 'admin')
+                                <a href="{{ url('/product/' . $product->id . '/edit') }}" title="Edit Product"><button
+                                        class="btn btn-primary btn-sm"><i class="fa fa-pencil-square-o"
+                                            aria-hidden="true"></i>
+                                        แก้ไข</button></a>
+
+                                <form method="POST" action="{{ url('product' . '/' . $product->id) }}"
+                                    accept-charset="UTF-8" style="display:inline">
+                                    {{ method_field('DELETE') }}
+                                    {{ csrf_field() }}
+                                    <button type="submit" class="btn btn-danger btn-sm" title="Delete Product"
+                                        onclick="return confirm('Confirm delete?')"><i class="fa fa-trash-o"
+                                            aria-hidden="true"></i> ลบสินค้า</button>
+                                </form>
+                            @endif
+                        @endif
+
+
                         <br />
                         <br />
 
@@ -28,31 +36,35 @@
                             <table class="table">
                                 <tbody>
                                     <tr>
-                                        <th>ID</th>
+                                        <th>หมายเลขสินค้า</th>
                                         <td>{{ $product->id }}</td>
                                     </tr>
                                     <tr>
-                                        <th> Title </th>
+                                        <th> ชื่อสินค้า </th>
                                         <td> {{ $product->title }} </td>
                                     </tr>
                                     <tr>
-                                        <th> Content </th>
+                                        <th> รายละเอียดสินค้า </th>
                                         <td> {{ $product->content }} </td>
                                     </tr>
                                     <tr>
-                                        <th> Price </th>
-                                        <td> {{ $product->price }} </td>
+                                        <th> ราคา </th>
+                                        <td> {{ $product->price }} บาท</td>
                                     </tr>
+                                    @if (Auth::check())
+                                        @if (Auth::user()->role == 'admin')
+                                            <tr>
+                                                <th> ราคาต้นทุน </th>
+                                                <td> {{ $product->cost }} บาท</td>
+                                            </tr>
+                                        @endif
+                                    @endif
                                     <tr>
-                                        <th> Cost </th>
-                                        <td> {{ $product->cost }} </td>
-                                    </tr>
-                                    <tr>
-                                        <th> Photo </th>
+                                        <th> รูปสินค้า </th>
                                         <td> <img src="{{ url('storage/' . $product->photo) }}" width="100" /></td>
                                     </tr>
                                     <tr>
-                                        <th> Quantity </th>
+                                        <th> จำนวนคงเหลือ </th>
                                         <td> {{ $product->quantity }} </td>
                                     </tr>
                                 </tbody>

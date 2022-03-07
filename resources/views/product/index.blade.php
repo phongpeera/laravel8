@@ -4,16 +4,21 @@
 
             <div class="col-md-12">
                 <div class="card">
-                    <div class="card-header">Product</div>
+                    <div class="card-header">สินค้าทั้งหมด</div>
                     <div class="card-body">
-                        <a href="{{ url('/product/create') }}" class="btn btn-success btn-sm" title="Add New Product">
-                            <i class="fa fa-plus" aria-hidden="true"></i> Add New
-                        </a>
+                        @if (Auth::check())
+                            @if (Auth::user()->role == 'admin')
+                                <a href="{{ url('/product/create') }}" class="btn btn-success btn-sm" title="เพิ่มสินค้าใหม่">
+                                    <i class="fa fa-plus" aria-hidden="true"></i> เพิ่มสินค้า
+                                </a>
+                            @endif
+                        @endif
+                        
 
                         <form method="GET" action="{{ url('/product') }}" accept-charset="UTF-8"
                             class="form-inline my-2 my-lg-0 float-right" role="search">
                             <div class="input-group">
-                                <input type="text" class="form-control" name="search" placeholder="Search..."
+                                <input type="text" class="form-control" name="search" placeholder="ค้นหา..."
                                     value="{{ request('search') }}">
                                 <span class="input-group-append">
                                     <button class="btn btn-secondary" type="submit">
@@ -32,11 +37,11 @@
                                         <th>#</th>
                                         <th>Title</th>
                                         <th>Content</th>
-                                        <th>Price</th>
+                                        <th>ราคา</th>
                                         <th>Cost</th>
                                         <th>Photo</th>
-                                        <th>Quantity</th>
-                                        <th>Actions</th>
+                                        <th>จำนวน</th>
+                                        <th>การดำเนินการ</th>
                                     </tr>
                                 </thead>
                                 <tbody>

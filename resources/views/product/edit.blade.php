@@ -4,9 +4,9 @@
 
             <div class="col-md-12">
                 <div class="card">
-                    <div class="card-header">Edit Product #{{ $product->id }}</div>
+                    <div class="card-header">แก้ไขสินค้า #{{ $product->id }}</div>
                     <div class="card-body">
-                        <a href="{{ url('/product') }}" title="Back"><button class="btn btn-warning btn-sm"><i class="fa fa-arrow-left" aria-hidden="true"></i> Back</button></a>
+                        <a href="{{ url('/product') }}" title="Back"><button class="btn btn-warning btn-sm"><i class="fa fa-arrow-left" aria-hidden="true"></i> กลับ</button></a>
                         <br />
                         <br />
 

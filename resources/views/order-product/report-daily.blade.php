@@ -1,21 +1,21 @@
 <x-themequiz title="">
     <div class="container">
         <div class="row">
-            @include('admin.sidebar')
+            {{-- @include('admin.sidebar') --}}
 
-            <div class="col-md-9">
+            <div class="col-md-12">
                 <div class="card mb-4">
-                    <div class="card-header">Daily Report</div>
+                    <div class="card-header">รายงานการขายรายวัน</div>
                     <div class="card-body">
                         <form method="GET" action="{{ url('/order-product/reportdaily') }}" accept-charset="UTF-8">
                             <div class="form-row">
                                 <div class="col-4">
-                                    <input type="date" class="form-control" name="date" placeholder="Search..."
+                                    <input type="date" class="form-control" name="date" placeholder="ค้นหา..."
                                         value="{{ request('date') }}">
                                 </div>
                                 <div class="col-4">
                                     <button class="btn btn-success" type="submit">
-                                        <i class="fa fa-search"></i> Search
+                                        <i class="fa fa-search"></i> ค้นหา
                                     </button>
                                 </div>
                             </div>
@@ -23,19 +23,19 @@
                     </div>
                 </div>
                 <div class="card">
-                    <div class="card-header">Report daily : {{ request('date') }}</div>
+                    <div class="card-header">รายงานวันที่ : {{ request('date') }}</div>
                     <div class="card-body">
                         <div class="table-responsive">
                             <table class="table">
                                 <thead>
                                     <tr>
                                         <th>#</th>
-                                        <th>Completed At</th>
-                                        <th>Order Id</th>
-                                        <th>Product Id</th>
-                                        <th>Quantity</th>
-                                        <th>Price</th>
-                                        <th>Total</th>
+                                        <th>วันที่ดำเนินการเสร็จ</th>
+                                        <th>หมายเลขคำสั่งซื้อ</th>
+                                        <th>รหัสสินค้า</th>
+                                        <th>จำนวน</th>
+                                        <th>ราคา</th>
+                                        <th>รวม</th>
                                     </tr>
                                 </thead>
                                 <tbody>

@@ -79,8 +79,8 @@
                                         <th>Color</th>
                                         <th>Year</th>
                                         <th>Mileage</th>
-                                        <th>User Id</th>
-                                        <th>Actions</th>
+                                        <th>ชื่อสมาชิก</th>
+                                        <th>การดำเนินการ</th>
                                     </tr>
                                 </thead>
                                 <tbody>

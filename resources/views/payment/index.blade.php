@@ -4,16 +4,16 @@
 
             <div class="col-md-12">
                 <div class="card">
-                    <div class="card-header">Payment</div>
+                    <div class="card-header">ข้อมูลการชำระเงิน</div>
                     <div class="card-body">
-                        <a href="{{ url('/payment/create') }}" class="btn btn-success btn-sm" title="Add New Payment">
+                        {{-- <a href="{{ url('/payment/create') }}" class="btn btn-success btn-sm" title="Add New Payment">
                             <i class="fa fa-plus" aria-hidden="true"></i> Add New
-                        </a>
+                        </a> --}}
 
                         <form method="GET" action="{{ url('/payment') }}" accept-charset="UTF-8"
                             class="form-inline my-2 my-lg-0 float-right" role="search">
                             <div class="input-group">
-                                <input type="text" class="form-control" name="search" placeholder="Search..."
+                                <input type="text" class="form-control" name="search" placeholder="ค้นหา..."
                                     value="{{ request('search') }}">
                                 <span class="input-group-append">
                                     <button class="btn btn-secondary" type="submit">
@@ -30,11 +30,11 @@
                                 <thead>
                                     <tr>
                                         <th>#</th>
-                                        <th>Total</th>
-                                        <th>User Id</th>
-                                        <th>Order Id</th>
-                                        <th>Slip</th>
-                                        <th>Actions</th>
+                                        <th>รวม</th>
+                                        <th>ชื่อสมาชิก</th>
+                                        <th>หมายเลขคำสั่งซื้อ</th>
+                                        <th>ภาพสลิปการโอนเงิน</th>
+                                        <th>การดำเนินการ</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -49,11 +49,11 @@
                                                 <a href="{{ url('/payment/' . $item->id) }}"
                                                     title="View Payment"><button class="btn btn-info btn-sm"><i
                                                             class="fa fa-eye" aria-hidden="true"></i>
-                                                        View</button></a>
+                                                        รายละเอียด</button></a>
                                                 <a href="{{ url('/payment/' . $item->id . '/edit') }}"
                                                     title="Edit Payment"><button class="btn btn-primary btn-sm"><i
                                                             class="fa fa-pencil-square-o" aria-hidden="true"></i>
-                                                        Edit</button></a>
+                                                        แก้ไข</button></a>
 
                                                 <form method="POST" action="{{ url('/payment' . '/' . $item->id) }}"
                                                     accept-charset="UTF-8" style="display:inline">
@@ -63,7 +63,7 @@
                                                         title="Delete Payment"
                                                         onclick="return confirm('Confirm delete?')"><i
                                                             class="fa fa-trash-o" aria-hidden="true"></i>
-                                                        Delete</button>
+                                                        ลบ</button>
                                                 </form>
                                             </td>
                                         </tr>

@@ -10,7 +10,7 @@
         <tr>
             <th>Date</th>
             <th>Country</th>
-            <th>Total</th>
+            <th>รวม</th>
             <th>Active</th>
             <th>Death</th>
             <th>Recovered</th>

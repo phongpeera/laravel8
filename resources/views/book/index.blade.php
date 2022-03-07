@@ -13,7 +13,7 @@
                         <form method="GET" action="{{ url('/book') }}" accept-charset="UTF-8"
                             class="form-inline my-2 my-lg-0 float-right" role="search">
                             <div class="input-group">
-                                <input type="text" class="form-control" name="search" placeholder="Search..."
+                                <input type="text" class="form-control" name="search" placeholder="ค้นหา..."
                                     value="{{ request('search') }}">
                                 <span class="input-group-append">
                                     <button class="btn btn-secondary" type="submit">
@@ -33,12 +33,12 @@
                                         <th>Title</th>
                                         <th class="d-none">Content</th>
                                         <th>Year</th>
-                                        <th>Price</th>
+                                        <th>ราคา</th>
                                         <th>Isbn</th>
                                         <th>Author Id</th>
                                         <th>Publisher Id</th>
                                         <th>Photo</th>
-                                        <th>Actions</th>
+                                        <th>การดำเนินการ</th>
                                     </tr>
                                 </thead>
                                 <tbody>

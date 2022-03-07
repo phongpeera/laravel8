@@ -36,24 +36,24 @@
             <!-- Sidebar - Brand -->
             <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
                 <div class="sidebar-brand-icon rotate-n-15">
-                    <i class="fas fa-laugh-wink"></i>
+                    <i class="fas fa-shopping-cart"></i>
                 </div>
-                <div class="sidebar-brand-text mx-3">SB Admin <sup>2</sup></div>
+                <div class="sidebar-brand-text mx-3">Shoping<sup>DISE</sup></div>
             </a>
 
             <!-- Divider -->
-            <hr class="sidebar-divider my-0">
+            {{-- <hr class="sidebar-divider my-0"> --}}
 
             <!-- Divider -->
-            <hr class="sidebar-divider">
+            {{-- <hr class="sidebar-divider"> --}}
 
             <!-- Heading -->
-            <div class="sidebar-heading">
+            {{-- <div class="sidebar-heading">
                 Interface
-            </div>
+            </div> --}}
 
             <!-- Nav Item - Pages Collapse Menu -->
-            <li class="nav-item">
+            {{-- <li class="nav-item">
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo"
                     aria-expanded="true" aria-controls="collapseTwo">
                     <i class="fas fa-fw fa-cog"></i>
@@ -67,7 +67,7 @@
                         <a class="collapse-item" href="cards.html">Cards</a>
                     </div>
                 </div>
-            </li>
+            </li> --}}
 
             <!-- Divider -->
             <hr class="sidebar-divider">
@@ -76,18 +76,22 @@
                     <i class="fa fa-home"></i> หน้าหลัก
                 </a>
             </li>
-            <li class="nav-item">
-                <a class="nav-link" href="{{ url('/order-product') }}">
-                    <i class="fa fa-shopping-cart"></i> ตะกร้าของฉัน
-                </a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="{{ url('/order') }}">
-                    <i class="fa fa-box"></i> คำสั่งซื้อของฉัน
-                </a>
-            </li>
+            @if (Auth::check())
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ url('/order-product') }}">
+                        <i class="fa fa-shopping-cart"></i> ตะกร้าของฉัน
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ url('/order') }}">
+                        <i class="fa fa-box"></i> คำสั่งซื้อของฉัน
+                    </a>
+                </li>
+            @endif
+            
             @if (Auth::check())
                 @if (Auth::user()->role == 'admin')
+                    <hr class="sidebar-divider">
                     <li class="nav-item" role="presentation">
                         <a class="nav-link" href="{{ url('/order-product/reportdaily') }}">
                             <i class="fa fa-file"></i> รายงานรายวัน
@@ -108,6 +112,30 @@
 
             <!-- Divider -->
             <hr class="sidebar-divider">
+            @if (!Auth::check())
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ route('register') }}">
+                        <i class="fa fa-rigth-to-bracket"></i> สมัครสมาชิก
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ url('/order-product') }}">
+                        <i class="fa fa-rigth-to-bracket"></i> ลงชื่อเข้าใช้
+                    </a>
+                </li>
+            @endif
+            @if (Auth::check())
+                <li class="nav-item">
+                    <form method="POST" action="{{ route('logout-product') }}">
+                        @csrf
+
+                        <a class="nav-link" href="route('logout-product')" onclick="event.preventDefault(); this.closest('form').submit();">
+                            <i class="fa fa-rigth-to-bracket"></i> ออกจากระบบ
+                        </a>
+                    </form>
+                    
+                </li>
+            @endif
 
         </ul>
         <!-- End of Sidebar -->
@@ -123,7 +151,7 @@
             <footer class="sticky-footer bg-white">
                 <div class="container my-auto">
                     <div class="copyright text-center my-auto">
-                        <span>Copyright &copy; Your Website 2020</span>
+                        <span>Copyright &copy; Shopping 2022</span>
                     </div>
                 </div>
             </footer>

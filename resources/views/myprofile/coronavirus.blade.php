@@ -1,7 +1,7 @@
 <h1>Thailand Coronavirus Report</h1>
 <table>
     <tr>
-        <th>No</th><th>Date</th> <th>Country</th> <th>Total</th> <th>Active</th> <th>Death</th> <th>Recovered</th>
+        <th>No</th><th>Date</th> <th>Country</th> <th>รวม</th> <th>Active</th> <th>Death</th> <th>Recovered</th>
     </tr>
     @foreach($reports as $item)
         @if ( $loop->iteration <= 3)

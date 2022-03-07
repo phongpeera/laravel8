@@ -4,14 +4,14 @@
 
             <div class="col-md-12">
                 <div class="card">
-                    <div class="card-header">Order {{ $order->id }}</div>
+                    <div class="card-header">คำสั่งซื้อหมายเลข {{ $order->id }}</div>
                     <div class="card-body">
 
                         <a href="{{ url('/order') }}" title="Back"><button class="btn btn-warning btn-sm"><i
-                                    class="fa fa-arrow-left" aria-hidden="true"></i> Back</button></a>
+                                    class="fa fa-arrow-left" aria-hidden="true"></i> กลับ</button></a>
                         <a href="{{ url('/order/' . $order->id . '/edit') }}" title="Edit Order"><button
                                 class="btn btn-primary btn-sm"><i class="fa fa-pencil-square-o" aria-hidden="true"></i>
-                                Edit</button></a>
+                                แก้ไข</button></a>
 
                         <form method="POST" action="{{ url('order' . '/' . $order->id) }}" accept-charset="UTF-8"
                             style="display:inline">
@@ -19,7 +19,7 @@
                             {{ csrf_field() }}
                             <button type="submit" class="btn btn-danger btn-sm" title="Delete Order"
                                 onclick="return confirm('Confirm delete?')"><i class="fa fa-trash-o"
-                                    aria-hidden="true"></i> Delete</button>
+                                    aria-hidden="true"></i> ยกเลิก</button>
                         </form>
                         <br />
                         <br />
@@ -28,39 +28,39 @@
                             <table class="table">
                                 <tbody>
                                     <tr>
-                                        <th>ID</th>
+                                        <th>หมายเลขคำสั่งซื้อ</th>
                                         <td>{{ $order->id }}</td>
                                     </tr>
-                                    <tr>
+                                    {{-- <tr>
                                         <th> User Id </th>
                                         <td> {{ $order->user_id }} </td>
-                                    </tr>
+                                    </tr> --}}
                                     <tr>
-                                        <th> Remark </th>
+                                        <th> หมายเหตุ </th>
                                         <td> {{ $order->remark }} </td>
                                     </tr>
                                     <tr>
-                                        <th> Total </th>
-                                        <td> {{ $order->total }} </td>
+                                        <th> รวมราคา </th>
+                                        <td> {{ $order->total }} บาท</td>
                                     </tr>
                                     <tr>
-                                        <th> Status </th>
+                                        <th> สถานะ </th>
                                         <td> {{ $order->status }} </td>
                                     </tr>
                                     <tr>
-                                        <th> Checking At </th>
+                                        <th> วันที่สั่งซื้อ </th>
                                         <td> {{ $order->checking_at }} </td>
                                     </tr>
                                     <tr>
-                                        <th> Paid At </th>
+                                        <th> วันที่ชำระ </th>
                                         <td> {{ $order->paid_at }} </td>
                                     </tr>
                                     <tr>
-                                        <th> Cancelled At </th>
+                                        <th> วันที่ยกเลิก </th>
                                         <td> {{ $order->cancelled_at }} </td>
                                     </tr>
                                     <tr>
-                                        <th> Completed At </th>
+                                        <th> วันที่ดำเนินการเสร็จ </th>
                                         <td> {{ $order->completed_at }} </td>
                                     </tr>
                                     <tr>
@@ -85,13 +85,13 @@
                                 <thead>
                                     <tr>
                                         <th>#</th>
-                                        <th>Order Id</th>
-                                        <th>Product Id</th>
-                                        <th>User Id</th>
-                                        <th>Quantity</th>
-                                        <th>Price</th>
-                                        <th>Total</th>
-                                        <th>Actions</th>
+                                        <th>หมายเลขคำสั่งซื้อ</th>
+                                        <th>รหัสสินค้า</th>
+                                        <th>ชื่อสมาชิก</th>
+                                        <th>จำนวน</th>
+                                        <th>ราคา</th>
+                                        <th>รวม</th>
+                                        <th>การดำเนินการ</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -114,11 +114,11 @@
                                                 <a href="{{ url('/order-product/' . $item->id) }}"
                                                     title="View OrderProduct"><button class="btn btn-info btn-sm"><i
                                                             class="fa fa-eye" aria-hidden="true"></i>
-                                                        View</button></a>
-                                                <a href="{{ url('/order-product/' . $item->id . '/edit') }}"
+                                                        ข้อมูล</button></a>
+                                                {{-- <a href="{{ url('/order-product/' . $item->id . '/edit') }}"
                                                     title="Edit OrderProduct"><button class="btn btn-primary btn-sm"><i
                                                             class="fa fa-pencil-square-o" aria-hidden="true"></i>
-                                                        Edit</button></a>
+                                                        Edit</button></a> --}}
 
                                                 <form method="POST"
                                                     action="{{ url('/order-product' . '/' . $item->id) }}"
@@ -129,7 +129,7 @@
                                                         title="Delete OrderProduct"
                                                         onclick="return confirm('Confirm delete?')"><i
                                                             class="fa fa-trash-o" aria-hidden="true"></i>
-                                                        Delete</button>
+                                                        ลบ</button>
                                                 </form>
                                             </td>
                                         </tr>

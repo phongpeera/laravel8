@@ -12,7 +12,7 @@
             <th>Age</th>
             <th>Salary</th>
             <th>Phone</th>
-            <th>Actions</th>
+            <th>การดำเนินการ</th>
         </tr>
         @foreach ($staffs as $item)
             <tr>

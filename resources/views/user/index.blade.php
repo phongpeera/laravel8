@@ -13,7 +13,7 @@
                         <form method="GET" action="{{ url('/user') }}" accept-charset="UTF-8"
                             class="form-inline my-2 my-lg-0 float-right" role="search">
                             <div class="input-group">
-                                <input type="text" class="form-control" name="search" placeholder="Search..."
+                                <input type="text" class="form-control" name="search" placeholder="ค้นหา..."
                                     value="{{ request('search') }}">
                                 <span class="input-group-append">
                                     <button class="btn btn-secondary" type="submit">
@@ -38,7 +38,7 @@
                                         <th>Role</th>
                                         <th>Profile No</th>
                                         <th>Profile Type</th>
-                                        <th>Actions</th>
+                                        <th>การดำเนินการ</th>
                                     </tr>
                                 </thead>
                                 <tbody>

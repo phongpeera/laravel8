@@ -6,9 +6,11 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests;
 
 use App\Models\OrderProduct;
+use App\Models\Product;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use SebastianBergmann\Environment\Console;
 
 class OrderProductController extends Controller
 {

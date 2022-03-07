@@ -1,24 +1,24 @@
 <x-themequiz title="">
     <div class="container">
         <div class="row">
-            @include('admin.sidebar')
+            {{-- @include('admin.sidebar') --}}
 
-            <div class="col-md-9">
+            <div class="col-md-12">
                 <div class="card mb-4">
-                    <div class="card-header">Monthly Report</div>
+                    <div class="card-header">รายงานการขายรายเดือน</div>
                     <div class="card-body">
-                        <form method="GET" action="{{ url('/order-product/reportmonthly') }}" accept-charset="UTF-8" >
+                        <form method="GET" action="{{ url('/order-product/reportmonthly') }}" accept-charset="UTF-8">
                             <div class="form-row">
                                 <div class="col-4">
                                     @php
                                         $months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
                                     @endphp
-                                    <select class="form-control" name="month" id="month" >
+                                    <select class="form-control" name="month" id="month">
                                         <option value="">เลือกเดือน</option>
-                                        @foreach($months as $item)
-                                        <option value="{{ $loop->iteration }}">{{ $item }}</option>
+                                        @foreach ($months as $item)
+                                            <option value="{{ $loop->iteration }}">{{ $item }}</option>
                                         @endforeach
-                                    </select>                                    
+                                    </select>
                                     <script>
                                         document.querySelector("#month").value = "{{ request('month') }}"
                                     </script>
@@ -30,54 +30,61 @@
                                     @endphp
                                     <select class="form-control" name="year" id="year">
                                         <option value="">เลือกปี</option>
-                                        @for($year = $start_at; $year > $start_at - 5 ; $year--)
-                                        <option value="{{ $year }}">{{ $year }}</option>
+                                        @for ($year = $start_at; $year > $start_at - 5; $year--)
+                                            <option value="{{ $year }}">{{ $year }}</option>
                                         @endfor
-                                    </select>                                      
+                                    </select>
                                     <script>
                                         document.querySelector("#year").value = "{{ request('year') }}"
                                     </script>
                                 </div>
                                 <div class="col-4">
                                     <button class="btn btn-success" type="submit">
-                                        <i class="fa fa-search"></i> Search
+                                        <i class="fa fa-search"></i> ค้นหา
                                     </button>
                                 </div>
-                            </div>   
+                            </div>
                         </form>
                     </div>
                 </div>
                 <div class="card">
-                    <div class="card-header">Report Month : {{ request('month') }} / {{ request('year') }} </div>
-                    <div class="card-body">                        
+                    <div class="card-header">รายงานเดือน : {{ request('month') }} / {{ request('year') }} </div>
+                    <div class="card-body">
                         <div class="table-responsive">
                             <table class="table">
                                 <thead>
                                     <tr>
-                                        <th>#</th><th>Completed At</th><th>Order Id</th><th>Product Id</th><th>Quantity</th><th>Price</th><th>Total</th>
+                                        <th>#</th>
+                                        <th>วันที่ดำเนินการเสร็จ</th>
+                                        <th>หมายเลขคำสั่งซื้อ</th>
+                                        <th>รหัสสินค้า</th>
+                                        <th>จำนวน</th>
+                                        <th>ราคา</th>
+                                        <th>รวม</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                @foreach($orderproduct as $item)
-                                    <tr>
-                                        <td>{{ $loop->iteration }}</td>
-                                        <td>{{ $item->completed_at }}</td>
-                                        <td>{{ $item->order_id }}</td>
-                                        <td>                                            
-                                            <div><img src="{{ url('storage/'.$item->product->photo )}}" width="100" /> </div>                                            
-                                            <div>{{ $item->product->title }}</div>
-                                        </td>
-                                        <td>{{ $item->quantity }}</td>
-                                        <td>{{ $item->price }}</td>
-                                        <td>{{ $item->total }}</td>                                        
-                                    </tr>
-                                @endforeach
+                                    @foreach ($orderproduct as $item)
+                                        <tr>
+                                            <td>{{ $loop->iteration }}</td>
+                                            <td>{{ $item->completed_at }}</td>
+                                            <td>{{ $item->order_id }}</td>
+                                            <td>
+                                                <div><img src="{{ url('storage/' . $item->product->photo) }}"
+                                                        width="100" /> </div>
+                                                <div>{{ $item->product->title }}</div>
+                                            </td>
+                                            <td>{{ $item->quantity }}</td>
+                                            <td>{{ $item->price }}</td>
+                                            <td>{{ $item->total }}</td>
+                                        </tr>
+                                    @endforeach
                                 </tbody>
-                            </table>                           
+                            </table>
                         </div>
                         <h2>รวมราคาสินค้า {{ number_format($orderproduct->sum('total')) }} บาท</h2>
 
-                        
+
 
 
                     </div>

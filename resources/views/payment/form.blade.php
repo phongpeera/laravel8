@@ -1,5 +1,5 @@
 <div class="form-group {{ $errors->has('total') ? 'has-error' : ''}}">
-    <label for="total" class="control-label">{{ 'Total' }} <span class="text-danger">*</span></label>
+    <label for="total" class="control-label">{{ 'ยอดที่ชำระ' }} <span class="text-danger">*</span></label>
     <input class="form-control" name="total" type="number" id="total" value="{{ isset($payment->total) ? $payment->total : ''}}" required>
     {!! $errors->first('total', '<p class="help-block">:message</p>') !!}
 </div>
@@ -9,17 +9,17 @@
     {!! $errors->first('user_id', '<p class="help-block">:message</p>') !!}
 </div>
 <div class="form-group {{ $errors->has('order_id') ? 'has-error' : ''}}">
-    <label for="order_id" class="control-label">{{ 'Order Id' }} (ยอดที่ต้องชำระ {{ $order->total }} บาท)</label>
+    <label for="order_id" class="control-label">{{ 'หมายเลขคำสั่งซื้อ' }} (ยอดที่ต้องชำระ {{ $order->total }} บาท)</label>
     <input class="form-control" name="order_id" type="number" id="order_id" value="{{ isset($payment->order_id) ? $payment->order_id : request('order_id')}}" readonly>
     {!! $errors->first('order_id', '<p class="help-block">:message</p>') !!}
 </div>
 <div class="form-group {{ $errors->has('slip') ? 'has-error' : ''}}">
-    <label for="slip" class="control-label">{{ 'Slip' }} <span class="text-danger">*</span></label>
+    <label for="slip" class="control-label">{{ 'ภาพสลิปการโอนเงิน' }} <span class="text-danger">*</span></label>
     <input class="form-control" name="slip" type="file" id="slip" value="{{ isset($payment->slip) ? $payment->slip : ''}}" required>
     {!! $errors->first('slip', '<p class="help-block">:message</p>') !!}
 </div>
 
 
 <div class="form-group">
-    <input class="btn btn-primary" type="submit" value="{{ $formMode === 'edit' ? 'Update' : 'Create' }}">
+    <input class="btn btn-primary" type="submit" value="{{ $formMode === 'edit' ? 'แก้ไขการชำระ' : 'แจ้งการชำระ' }}">
 </div>
