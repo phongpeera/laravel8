@@ -1,11 +1,12 @@
 <?php
 
 namespace App\Models;
-
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 class Book extends Model
 {
+    use HasFactory;
     /**
      * The database table used by the model.
      *
@@ -25,7 +26,7 @@ class Book extends Model
      *
      * @var array
      */
-    protected $fillable = ['title', 'content', 'year', 'price', 'isbn', 'author_id', 'publisher_id', 'photo'];
+    protected $fillable = ['title', 'content', 'year', "name","price","image", 'isbn', 'author_id', 'publisher_id', 'photo'];
 
     
 }

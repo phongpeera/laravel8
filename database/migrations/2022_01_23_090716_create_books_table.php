@@ -19,7 +19,9 @@ class CreateBooksTable extends Migration
             $table->string('title')->nullable();
             $table->text('content')->nullable();
             $table->integer('year')->nullable();
-            $table->float('price')->nullable();
+            $table->string("name")->nullable();
+            $table->float("price",16,2)->nullable();
+            $table->string("image")->nullable();
             $table->string('isbn')->nullable();
             $table->integer('author_id')->nullable();
             $table->integer('publisher_id')->nullable();
